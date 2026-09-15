@@ -225,6 +225,18 @@ section{padding:100px 0;position:relative;z-index:1}
 /* ─── CTA ─── */
 #cta{padding:110px 0;text-align:center;position:relative;overflow:hidden}
 #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(0,100,255,0.08),transparent 70%)}
+.lead-form{max-width:560px;margin:36px auto 0;text-align:left;background:rgba(15,32,64,0.55);border:1px solid var(--border2);border-radius:16px;padding:26px 26px 22px}
+.lead-form .lf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:560px){.lead-form .lf-row{grid-template-columns:1fr}}
+.lead-form input,.lead-form textarea{width:100%;padding:11px 13px;border-radius:9px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);font-size:13px;font-family:inherit;outline:none}
+.lead-form input:focus,.lead-form textarea:focus{border-color:var(--accent)}
+.lead-form textarea{resize:vertical;margin-bottom:14px}
+.lead-form .lf-submit{width:100%;justify-content:center;margin-bottom:10px}
+.lf-status{font-size:12.5px;min-height:18px;text-align:center}
+.lf-status.ok{color:var(--accent3)}
+.lf-status.err{color:var(--red2)}
+.lf-alt{font-size:12px;color:var(--text3);margin-top:18px;text-align:center}
+.lf-alt a{color:var(--accent);text-decoration:none}
 .cta-title{font-size:clamp(30px,3.8vw,48px);font-weight:900;letter-spacing:-2px;margin-bottom:20px}
 .cta-desc{font-size:16px;color:var(--text2);max-width:520px;margin:0 auto 40px;line-height:1.8}
 .cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
@@ -310,10 +322,6 @@ footer{background:rgba(2,5,12,0.9);border-top:1px solid var(--border);padding:56
       <a href="#faq">よくある質問</a>
       <a href="#profile">代表紹介</a>
     </nav>
-    <div class="header-cta">
-      <a href="emplex_timesheet.html" class="btn btn-outline">ログイン</a>
-      <a href="#pricing" class="btn btn-primary"><span>🚀 無料トライアルを始める</span></a>
-    </div>
   </div>
 </header>
 
@@ -338,12 +346,6 @@ footer{background:rgba(2,5,12,0.9);border-top:1px solid var(--border);padding:56
           仮締め→本締めの承認ワークフローと部署・社員・コストレートのマスタ管理で、
           月次の工数集計業務を丸ごと自動化するクラウド型タイムシート＆原価管理SaaSです。
         </p>
-        <div class="hero-actions animate-fadeInUp delay-3">
-          <a href="#pricing" class="btn btn-primary btn-lg glow-btn">
-            <span>🚀 14日間無料で試す</span>
-          </a>
-          <a href="emplex_timesheet.html" class="btn btn-outline btn-lg">デモを体験する →</a>
-        </div>
         <div class="hero-stats animate-fadeInUp delay-4">
           <div class="hero-stat">
             <div class="nc-val gradient-text" style="font-size:30px">2<span style="font-size:16px">段階承認</span></div>
@@ -772,7 +774,7 @@ footer{background:rgba(2,5,12,0.9);border-top:1px solid var(--border);padding:56
           <li class="na">仮締め・本締め承認</li>
           <li class="na">原価管理（4軸集計）</li>
         </ul>
-        <a href="emplex_timesheet.html" class="btn btn-outline" style="justify-content:center">このプランで試す</a>
+        <a href="#cta" class="btn btn-outline" style="justify-content:center">このプランで試す</a>
       </div>
       <!-- Standard -->
       <div class="price-card on">
@@ -790,7 +792,7 @@ footer{background:rgba(2,5,12,0.9);border-top:1px solid var(--border);padding:56
           <li>ロール権限管理（担当者／上長）</li>
           <li class="na">マスタメンテナンス全9種＋SSO連携</li>
         </ul>
-        <a href="#cta" class="btn btn-primary" style="justify-content:center">無料トライアルを始める</a>
+        <a href="#cta" class="btn btn-primary" style="justify-content:center">お問い合わせ</a>
       </div>
       <!-- Enterprise -->
       <div class="price-card">
@@ -932,16 +934,75 @@ footer{background:rgba(2,5,12,0.9);border-top:1px solid var(--border);padding:56
       工数入力の手間を、<br>
       <span class="gradient-text">今日から手放しませんか</span>
     </h2>
-    <p class="cta-desc">クレジットカード登録不要。14日間、すべての機能を無料でお試しいただけます。</p>
     <div class="cta-actions">
-      <a href="emplex_timesheet.html" class="btn btn-primary btn-lg glow-btn">
-        <span>🚀 無料トライアルを始める</span>
-      </a>
       <a href="#pricing" class="btn btn-outline btn-lg">料金プランを見る</a>
     </div>
-    <div class="cta-note">デモ環境：社員コードでログイン（初期パスワード Pass@1234）</div>
+
+    <!--
+      フォーム送信先について（FormSubmit.co / アカウント登録不要）:
+      1) 表向きの問い合わせ先表示は info@project-innovation.jp ですが、
+         実際の送信先（action）は ykfuruya0703@gmail.com に設定しています
+      2) 初回送信時のみ、FormSubmit.co から ykfuruya0703@gmail.com に確認メールが届きます。
+         本文中の「Activate Form」リンクを1回クリックすると有効化され、
+         以降の送信内容がそのまま ykfuruya0703@gmail.com に届くようになります。
+         このアクティベーションが完了するまでは、送信自体は成功しても
+         実際の問い合わせ内容は届きません。ykfuruya0703@gmail.com の受信箱・
+         迷惑メールフォルダを確認し、確認メールを見つけて有効化してください
+    -->
+    <form id="leadForm" class="lead-form" action="https://formsubmit.co/ajax/ykfuruya0703@gmail.com" method="POST">
+      <div class="lf-row">
+        <input type="text" name="name" placeholder="お名前" autocomplete="name" required>
+        <input type="text" name="company" placeholder="会社名・屋号" autocomplete="organization">
+      </div>
+      <input type="email" name="email" placeholder="メールアドレス" autocomplete="email" required style="margin-bottom:10px">
+      <textarea name="message" rows="3" placeholder="ご質問・ご要望（任意）"></textarea>
+      <input type="hidden" name="_subject" value="【eMplex Time Sheet】無料相談・デモ申込み">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit" class="btn btn-primary lf-submit"><span>🚀 無料相談・デモを申し込む</span></button>
+      <div class="lf-status" id="lfStatus" role="status" aria-live="polite"></div>
+    </form>
+    <p class="lf-alt">お急ぎの方は <a href="mailto:info@project-innovation.jp">info@project-innovation.jp</a> まで直接ご連絡ください。</p>
   </div>
 </section>
+
+<script>
+// お問い合わせ/デモ申込みフォームの送信処理（FormSubmit.co エンドポイント・アカウント登録不要）
+// ※メールソフトを開かせる方式(mailto:)は使用しません。フォームはバックグラウンドで
+//   FormSubmit.co へ直接送信されます。
+(function(){
+  const form = document.getElementById('leadForm');
+  const status = document.getElementById('lfStatus');
+  if (!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = form.querySelector('.lf-submit');
+    btn.disabled = true;
+    status.textContent = '送信中...';
+    status.className = 'lf-status';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = '✅ 送信しました。担当者より2営業日以内にご連絡します。';
+        status.className = 'lf-status ok';
+        form.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data.errors && data.errors.map(x => x.message).join(', ')) || '送信に失敗しました');
+      }
+    } catch (err) {
+      status.textContent = '⚠️ 送信に失敗しました。お手数ですが info@project-innovation.jp まで直接ご連絡ください。';
+      status.className = 'lf-status err';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
 
 <!-- ─── FOOTER ─── -->
 <footer>
